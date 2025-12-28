@@ -1,0 +1,9 @@
+#cloud-config
+# 이 파일은 VM의 첫 부팅 시 Cloud-Init이 사용하는 설정입니다.
+# qemu-guest-agent 서비스를 시작하고, 부팅 시 자동으로 실행되도록 활성화합니다.
+runcmd:
+  - apt update
+  - apt install -y qemu-guest-agent
+  - systemctl start qemu-guest-agent
+  - systemctl enable qemu-guest-agent
+  - touch /etc/cloud/cloud-init.disabled
